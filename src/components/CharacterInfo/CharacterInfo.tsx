@@ -58,7 +58,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ image }) => {
       </div>
 
       {/* 캐릭터 특징 키워드 */}
-      <div className="mt-6">
+      <div className="mt-8">
         <p className="text-sm text-gray-500 mb-3">캐릭터 묘사</p>
         <div className="flex flex-wrap gap-2">
           {currentCharacter.traits.map((trait, index) => (

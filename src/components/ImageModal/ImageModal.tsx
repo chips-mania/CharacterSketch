@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { AIImage } from '../../types/ai-image';
 import CommentSection from '../CommentSection/CommentSection';
 import CommentManager from '../CommentManager/CommentManager';
@@ -19,27 +19,39 @@ interface Comment {
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
-  const handleBackdropClick = (e: React.MouseEvent) => {
+  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
-  };
+  }, [onClose]);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       onClose();
     }
-  };
+  }, [onClose]);
 
   React.useEffect(() => {
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown as any);
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown as any);
+      document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, handleKeyDown]);
+
+  // 이미지 로드 핸들러 메모화
+  const handleImageError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    console.error('Image failed to load:', image?.imageUrl);
+    console.error('Error event:', e);
+  }, [image?.imageUrl]);
+
+  const handleImageLoad = useCallback(() => {
+    console.log('Image loaded successfully:', image?.imageUrl);
+  }, [image?.imageUrl]);
 
   if (!isOpen || !image) return null;
 
@@ -74,23 +86,23 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
               src={image.imageUrl}
               alt={image.characterName}
               className="w-full h-full object-cover"
-              onError={(e) => {
-                console.error('Image failed to load:', image.imageUrl);
-                console.error('Error event:', e);
-              }}
-              onLoad={() => {
-                console.log('Image loaded successfully:', image.imageUrl);
-              }}
+              onError={handleImageError}
+              onLoad={handleImageLoad}
             />
             
             {/* 이미지 하단 그라데이션 오버레이 */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
 
-          {/* 오른쪽: 정보 섹션 */}
-          <div className="lg:w-1/2 flex flex-col overflow-y-auto">
+          {/* 오른쪽: 정보+댓글 전체 스크롤 영역 - 최적화된 스크롤 */}
+          <div className="lg:w-1/2 h-full overflow-y-auto overscroll-contain will-change-scroll" 
+               style={{ 
+                 scrollBehavior: 'auto',
+                 transform: 'translateZ(0)', // 하드웨어 가속 활성화
+                 WebkitOverflowScrolling: 'touch' // iOS 최적화
+               }}>
             {/* 상단 정보 */}
-            <div className="p-8 flex-shrink-0">
+            <div className="p-8">
               {/* 웹소설 제목 */}
               <div className="mb-6">
                 <div className="flex items-center gap-3">
@@ -121,15 +133,17 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* 댓글 섹션 */}
-            <CommentManager imageId={image.id}>
-              {(comments, onAddComment) => (
-                <CommentSection 
-                  comments={comments}
-                  onAddComment={onAddComment}
-                />
-              )}
-            </CommentManager>
+            {/* 댓글 섹션 - 고정 위치 최적화 */}
+            <div className="relative" style={{ transform: 'translateZ(0)' }}>
+              <CommentManager imageId={image.id}>
+                {(comments, onAddComment) => (
+                  <CommentSection 
+                    comments={comments}
+                    onAddComment={onAddComment}
+                  />
+                )}
+              </CommentManager>
+            </div>
           </div>
         </div>
       </div>
@@ -138,3 +152,4 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
 };
 
 export default ImageModal;
+
