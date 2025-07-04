@@ -22,10 +22,11 @@ const NovelList: React.FC<NovelListProps> = ({ novels }) => {
                 className="w-full h-full object-cover"
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <h3 className="text-white font-bold text-lg mb-1">{novel.title}</h3>
-              <p className="text-white/80 text-sm">{novel.author}</p>
+            {/* 강화된 하단 음영 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+              <h3 className="text-white font-bold text-lg mb-1 drop-shadow-lg">{novel.title}</h3>
+              <p className="text-white/90 text-sm drop-shadow-md">{novel.author}</p>
             </div>
           </div>
 
