@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AIImage } from '../../types/ai-image';
 import CommentSection from '../CommentSection/CommentSection';
 import CommentManager from '../CommentManager/CommentManager';
+import CharacterInfo from '../CharacterInfo/CharacterInfo';
 
 interface ImageModalProps {
   image: AIImage | null;
@@ -114,22 +115,9 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
                 </div>
               </div>
 
-              {/* 추가 정보 (더미 데이터) */}
-              <div className="space-y-4 mb-8">
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">캐릭터</p>
-                  <p className="text-gray-700">열정적이고 정의감이 강한 성격으로, 어려운 상황에서도 포기하지 않는 끈기를 가지고 있습니다.</p>
-                </div>
-                
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">특별한 능력</p>
-                  <p className="text-gray-700">마법과 검술을 모두 구사할 수 있는 하이브리드 전사로, 상황에 따라 다양한 전투 스타일을 구사합니다.</p>
-                </div>
-                
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">스토리에서의 역할</p>
-                  <p className="text-gray-700">주인공의 가장 신뢰할 수 있는 동료이자 전략가로서, 팀의 핵심 멤버 역할을 담당합니다.</p>
-                </div>
+              {/* 캐릭터 상세 정보 */}
+              <div className="mt-16">
+                <CharacterInfo image={image} />
               </div>
             </div>
 

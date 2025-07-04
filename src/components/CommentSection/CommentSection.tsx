@@ -61,7 +61,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
         
         {/* 댓글 작성 폼 */}
         <form onSubmit={handleSubmitComment} className="mb-6">
-          <div className="flex-1 space-y-3">
+          <div className="space-y-3">
             <input
               type="text"
               value={commentAuthor}
@@ -79,7 +79,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
               disabled={isSubmitting}
             />
           </div>
-          <div className="flex justify-end mt-2">
+          <div className="flex justify-end mt-3">
             <button
               type="submit"
               disabled={!newComment.trim() || !commentAuthor.trim() || isSubmitting}

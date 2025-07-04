@@ -43,7 +43,7 @@ const Navigation: React.FC = () => {
               }`}
               style={{ marginTop: '12%' }}
             >
-              시각화
+              서비스 기획
             </Link>
             <Link 
               to="/novel/1" 
@@ -54,7 +54,7 @@ const Navigation: React.FC = () => {
               }`}
               style={{ marginTop: '12%' }}
             >
-              소설 상세
+              AI 프롬프팅
             </Link>
           </div>
 
