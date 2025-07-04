@@ -53,7 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
             <div className="relative flex-1">
               <input
                 type="text"
-                placeholder="웹소설을 검색해보세요..."
+                placeholder="웹소설을 검색해보세요"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyPress={handleKeyPress}

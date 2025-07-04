@@ -36,7 +36,7 @@ const HomePage = () => {
         {/* 상단: AI 이미지 Cover Flow */}
         <section className="mb-16 mt-24">
           <div className="text-center">
-            <p className="text-text-secondary">최애 웹소설 속 캐릭터들을 감상해보세요!</p>
+            <p className="text-text-secondary text-lg md:text-xl lg:text-2xl font-medium">최애 웹소설 속 캐릭터들을 감상해보세요!</p>
           </div>
           <CoverFlow images={aiImages} />
         </section>
@@ -45,7 +45,6 @@ const HomePage = () => {
         <section>
           <div className="text-center mb-10 mt-24">
             <h2 className="text-3xl font-bold text-text mb-3">웹소설</h2>
-            <p className="text-text-secondary">참여하고 싶은 웹소설을 선택해주세요</p>
           </div>
           
           {/* 검색바 추가 */}

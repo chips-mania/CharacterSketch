@@ -16,8 +16,10 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
   const len = images.length;
 
   const handleImageClick = (image: AIImage) => {
+    console.log('Image clicked:', image);
     setSelectedImage(image);
     setIsModalOpen(true);
+    console.log('Modal state set to open');
   };
 
   const handleModalClose = () => {
@@ -49,7 +51,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
 
   return (
     <>
-      <div className="coverflow-container relative overflow-hidden">
+      <div className="coverflow-container relative overflow-hidden min-h-[60vh]">
         <button
           onClick={handlePrev}
           disabled={isTransitioning}
@@ -61,7 +63,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
           </svg>
         </button>
 
-        <div className="flex items-start justify-center relative h-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px] pt-8">
+        <div className="flex items-start justify-center relative h-full min-h-[550px] md:min-h-[650px] lg:min-h-[750px] xl:min-h-[850px] pt-16">
           {images.map((image, index) => {
             // 현재 이미지를 기준으로 상대적 위치 계산
             let distance = index - currentIndex;
@@ -80,7 +82,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
 
             const isActive = distance === 0;
             const rotationY = distance * 25;
-            const translateX = distance * 400;
+            const translateX = distance * 420;
             const translateZ = isActive ? 0 : -100;
             const scale = isActive ? 1 : 0.8;
             const opacity = isActive ? 1 : 0.7;
@@ -100,7 +102,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
                   <img
                     src={image.imageUrl}
                     alt={image.characterName}
-                    className="w-64 h-80 md:w-72 md:h-88 lg:w-80 lg:h-96 xl:w-88 xl:h-[26rem] object-cover rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500"
+                    className="w-72 h-96 md:w-80 md:h-[28rem] lg:w-88 lg:h-[32rem] xl:w-[26rem] xl:h-[36rem] object-cover rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500"
                   />
                   
                   {/* 양옆 이미지용 오버레이 (중앙이 아닐 때만) */}

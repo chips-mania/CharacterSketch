@@ -59,7 +59,7 @@ export const novels: Novel[] = [
   {
     id: '6',
     title: 'SSS급 죽어야 사는 헌터',
-    author: '게임러버',
+    author: '신노아',
     coverImage: '/images/covers/SSS급 죽어야 사는 헌터.png',
     description: '나도 S급 스킬이 갖고 싶다! 죽고 싶을 정도로!',
     tags: ['레이드', '탑등반', '먼치킨'],
@@ -81,7 +81,7 @@ export const novels: Novel[] = [
   {
     id: '8',
     title: '튜토리얼이 너무 어렵다',
-    author: '우주팬',
+    author: 'gandara',
     coverImage: '/images/covers/튜토리얼이 너무 어렵다.png',
     description: '[튜토리얼 세계에 입장하시겠습니까?]',
     tags: ['탑등반', '성좌물', '이세계'],

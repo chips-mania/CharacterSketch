@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AIImage } from '../../types/ai-image';
+import CommentSection from '../CommentSection/CommentSection';
 
 interface ImageModalProps {
   image: AIImage | null;
@@ -7,8 +8,42 @@ interface ImageModalProps {
   onClose: () => void;
 }
 
+interface Comment {
+  id: string;
+  author: string;
+  content: string;
+  timestamp: Date;
+  avatar?: string;
+}
+
 const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
-  if (!isOpen || !image) return null;
+  const [comments, setComments] = useState<Comment[]>([
+    {
+      id: '1',
+      author: '캐릭터팬1',
+      content: '정말 멋진 캐릭터네요! AI가 그린 그림이 너무 예뻐요.',
+      timestamp: new Date('2024-01-15T10:30:00'),
+      avatar: 'https://via.placeholder.com/32x32/4F46E5/FFFFFF?text=1'
+    },
+    {
+      id: '2',
+      author: '웹소설러버',
+      content: '이 캐릭터가 웹소설에서 어떤 역할을 하는지 궁금해요.',
+      timestamp: new Date('2024-01-15T11:15:00'),
+      avatar: 'https://via.placeholder.com/32x32/10B981/FFFFFF?text=2'
+    },
+    {
+      id: '3',
+      author: 'AI아트팬',
+      content: 'AI가 그린 그림이 원작과 정말 잘 맞네요!',
+      timestamp: new Date('2024-01-15T12:00:00'),
+      avatar: 'https://via.placeholder.com/32x32/F59E0B/FFFFFF?text=3'
+    }
+  ]);
+
+  const handleAddComment = (comment: Comment) => {
+    setComments(prev => [comment, ...prev]);
+  };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -32,6 +67,10 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
     };
   }, [isOpen]);
 
+  if (!isOpen || !image) return null;
+
+  console.log('Modal rendering with:', { isOpen, image });
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -41,7 +80,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       
       {/* 모달 컨테이너 */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-7xl w-full h-[95vh] flex flex-col">
         {/* 닫기 버튼 */}
         <button
           onClick={onClose}
@@ -61,6 +100,13 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
               src={image.imageUrl}
               alt={image.characterName}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                console.error('Image failed to load:', image.imageUrl);
+                console.error('Error event:', e);
+              }}
+              onLoad={() => {
+                console.log('Image loaded successfully:', image.imageUrl);
+              }}
             />
             
             {/* 이미지 하단 그라데이션 오버레이 */}
@@ -68,31 +114,34 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
           </div>
 
           {/* 오른쪽: 정보 섹션 */}
-          <div className="lg:w-1/2 p-8 flex flex-col justify-center">
-            <div className="mb-8">
-              {/* 캐릭터 이름 */}
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                {image.characterName}
-              </h2>
+          <div className="lg:w-1/2 flex flex-col overflow-y-auto">
+            {/* 상단 정보 */}
+            <div className="p-8 flex-shrink-0">
+              {/* 캐릭터 이름과 소개 */}
+              <div className="mb-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <h2 className="text-3xl font-bold text-gray-800">
+                    {image.characterName}
+                  </h2>
+                  <p className="text-gray-700 leading-relaxed text-base mt-2">
+                    {image.description}
+                  </p>
+                </div>
+              </div>
               
               {/* 웹소설 제목 */}
               <div className="mb-6">
                 <p className="text-lg text-primary font-semibold mb-2">
-                  출처 웹소설
+                  웹소설
                 </p>
-                <h3 className="text-2xl font-bold text-gray-700">
-                  {image.novelTitle}
-                </h3>
-              </div>
-              
-              {/* 캐릭터 설명 */}
-              <div className="mb-8">
-                <p className="text-lg text-gray-600 font-medium mb-3">
-                  캐릭터 소개
-                </p>
-                <p className="text-gray-700 leading-relaxed text-base">
-                  {image.description}
-                </p>
+                <div className="flex items-center gap-3">
+                  <h3 className="text-2xl font-bold text-gray-700">
+                    {image.novelTitle}
+                  </h3>
+                  <button className="bg-black text-white text-sm px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200">
+                    웹소설 보기
+                  </button>
+                </div>
               </div>
 
               {/* 추가 정보 (더미 데이터) */}
@@ -114,15 +163,11 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* 액션 버튼들 */}
-            <div className="space-y-3">
-              <button className="w-full bg-primary text-white py-4 px-6 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200 text-lg">
-                캐릭터 스케치 참여하기
-              </button>
-              <button className="w-full border-2 border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200">
-                웹소설 보기
-              </button>
-            </div>
+            {/* 댓글 섹션 */}
+            <CommentSection 
+              comments={comments}
+              onAddComment={handleAddComment}
+            />
           </div>
         </div>
       </div>

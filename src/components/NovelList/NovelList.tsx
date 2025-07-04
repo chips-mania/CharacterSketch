@@ -50,7 +50,7 @@ const NovelList: React.FC<NovelListProps> = ({ novels }) => {
 
             {/* 참여 버튼 */}
             <button className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200 mt-auto">
-              스케치 참여하기
+              스케치하기
             </button>
           </div>
         </div>
