@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CoverFlow from '../../components/CoverFlow/CoverFlow';
 import NovelList from '../../components/NovelList/NovelList';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import { aiImages } from '../../data/ai-images';
 import { novels } from '../../data/novels';
+import { Novel } from '../../types/novel';
 
 const HomePage = () => {
+  const [filteredNovels, setFilteredNovels] = useState<Novel[]>(novels);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleSearchResults = (results: Novel[], hasSearched?: boolean) => {
+    setFilteredNovels(results);
+    setHasSearched(hasSearched ?? true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* 상단 그라데이션 배경 */}
@@ -37,7 +47,24 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold text-text mb-3">웹소설</h2>
             <p className="text-text-secondary">참여하고 싶은 웹소설을 선택해주세요</p>
           </div>
-          <NovelList novels={novels} />
+          
+          {/* 검색바 추가 */}
+          <SearchBar novels={novels} onSearchResults={handleSearchResults} />
+          
+          {/* 검색 결과 표시 */}
+          {hasSearched && filteredNovels.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-gray-500 text-lg mb-4">
+                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33" />
+                </svg>
+                검색 결과가 없습니다
+              </div>
+              <p className="text-gray-400">다른 검색어를 시도해보세요</p>
+            </div>
+          ) : (
+            <NovelList novels={filteredNovels} />
+          )}
         </section>
       </div>
     </div>
