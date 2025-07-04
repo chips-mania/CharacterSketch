@@ -1,0 +1,8 @@
+# 자동 줄바꿈 관리
+* text=auto
+
+# 확장자별 강제 설정 (선택)
+*.ts text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
