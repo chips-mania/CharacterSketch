@@ -17,33 +17,76 @@ interface Comment {
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
-  const [comments, setComments] = useState<Comment[]>([
-    {
-      id: '1',
-      author: '캐릭터팬1',
-      content: '정말 멋진 캐릭터네요! AI가 그린 그림이 너무 예뻐요.',
-      timestamp: new Date('2024-01-15T10:30:00'),
-      avatar: 'https://via.placeholder.com/32x32/4F46E5/FFFFFF?text=1'
-    },
-    {
-      id: '2',
-      author: '웹소설러버',
-      content: '이 캐릭터가 웹소설에서 어떤 역할을 하는지 궁금해요.',
-      timestamp: new Date('2024-01-15T11:15:00'),
-      avatar: 'https://via.placeholder.com/32x32/10B981/FFFFFF?text=2'
-    },
-    {
-      id: '3',
-      author: 'AI아트팬',
-      content: 'AI가 그린 그림이 원작과 정말 잘 맞네요!',
-      timestamp: new Date('2024-01-15T12:00:00'),
-      avatar: 'https://via.placeholder.com/32x32/F59E0B/FFFFFF?text=3'
-    }
-  ]);
+  // 이미지별로 댓글을 관리하기 위한 상태
+  const [commentsByImage, setCommentsByImage] = useState<Record<string, Comment[]>>({
+    '1': [
+      {
+        id: '1',
+        author: '캐릭터팬1',
+        content: '정말 멋진 캐릭터네요! AI가 그린 그림이 너무 예뻐요.',
+        timestamp: new Date('2024-01-15T10:30:00'),
+        avatar: 'https://via.placeholder.com/32x32/4F46E5/FFFFFF?text=1'
+      },
+      {
+        id: '2',
+        author: '웹소설러버',
+        content: '이 캐릭터가 웹소설에서 어떤 역할을 하는지 궁금해요.',
+        timestamp: new Date('2024-01-15T11:15:00'),
+        avatar: 'https://via.placeholder.com/32x32/10B981/FFFFFF?text=2'
+      },
+      {
+        id: '3',
+        author: 'AI아트팬',
+        content: 'AI가 그린 그림이 원작과 정말 잘 맞네요!',
+        timestamp: new Date('2024-01-15T12:00:00'),
+        avatar: 'https://via.placeholder.com/32x32/F59E0B/FFFFFF?text=3'
+      }
+    ],
+    '2': [
+      {
+        id: '4',
+        author: '미케아팬',
+        content: '미케아 가올드 캐릭터가 정말 매력적이네요!',
+        timestamp: new Date('2024-01-15T13:00:00'),
+        avatar: 'https://via.placeholder.com/32x32/4F46E5/FFFFFF?text=4'
+      },
+      {
+        id: '5',
+        author: '마법사팬',
+        content: '전 회장이라는 설정이 정말 멋져요.',
+        timestamp: new Date('2024-01-15T14:00:00'),
+        avatar: 'https://via.placeholder.com/32x32/10B981/FFFFFF?text=5'
+      }
+    ],
+    '3': [
+      {
+        id: '6',
+        author: '아호아팬',
+        content: '아호아 강난 캐릭터가 정말 예뻐요!',
+        timestamp: new Date('2024-01-15T15:00:00'),
+        avatar: 'https://via.placeholder.com/32x32/4F46E5/FFFFFF?text=6'
+      },
+      {
+        id: '7',
+        author: '비서실장팬',
+        content: '비서실장이라는 포지션이 정말 멋져요.',
+        timestamp: new Date('2024-01-15T16:00:00'),
+        avatar: 'https://via.placeholder.com/32x32/10B981/FFFFFF?text=7'
+      }
+    ]
+  });
 
   const handleAddComment = (comment: Comment) => {
-    setComments(prev => [comment, ...prev]);
+    if (!image) return;
+    
+    setCommentsByImage(prev => ({
+      ...prev,
+      [image.id]: [comment, ...(prev[image.id] || [])]
+    }));
   };
+
+  // 현재 이미지의 댓글 가져오기
+  const currentComments = image ? (commentsByImage[image.id] || []) : [];
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -165,7 +208,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
 
             {/* 댓글 섹션 */}
             <CommentSection 
-              comments={comments}
+              comments={currentComments}
               onAddComment={handleAddComment}
             />
           </div>

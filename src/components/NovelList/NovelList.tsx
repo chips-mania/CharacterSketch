@@ -43,7 +43,7 @@ const NovelList: React.FC<NovelListProps> = ({ novels }) => {
                   key={index}
                   className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
                 >
-                  {tag}
+                  #{tag}
                 </span>
               ))}
             </div>

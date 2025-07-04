@@ -7,7 +7,7 @@ export const novels: Novel[] = [
     author: '김치우',
     coverImage: '/images/covers/무한의 마법사.png',
     description: '빛의 속도로 질주하는 초신성의 폭발! 인간의 몸으로 무한을 꿈꾸다!',
-    tags: ['마법사', '성장', '철학'],
+    tags: ['마법사', '성장물', '철학'],
     totalChapters: 200,
     progress: 30,
     status: 'waiting'
