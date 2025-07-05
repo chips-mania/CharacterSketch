@@ -21,6 +21,11 @@ class CommentService {
   // 댓글 목록 가져오기
   async getComments(imageId: string): Promise<Comment[]> {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not available');
+        return [];
+      }
+
       const { data, error } = await supabase
         .from('comments')
         .select('*')
@@ -49,6 +54,14 @@ class CommentService {
   // 댓글 추가
   async addComment(imageId: string, comment: Omit<Comment, 'id'>): Promise<ApiResponse<Comment>> {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not available');
+        return {
+          success: false,
+          error: '댓글 기능이 비활성화되어 있습니다.'
+        };
+      }
+
       const { data, error } = await supabase
         .from('comments')
         .insert([{
@@ -92,6 +105,14 @@ class CommentService {
   // 댓글 삭제 (나중에 구현)
   async deleteComment(imageId: string, commentId: string): Promise<ApiResponse<boolean>> {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not available');
+        return {
+          success: false,
+          error: '댓글 기능이 비활성화되어 있습니다.'
+        };
+      }
+
       const { error } = await supabase
         .from('comments')
         .delete()
@@ -122,6 +143,14 @@ class CommentService {
   // 댓글 수정 (나중에 구현)
   async updateComment(imageId: string, commentId: string, content: string): Promise<ApiResponse<Comment>> {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not available');
+        return {
+          success: false,
+          error: '댓글 기능이 비활성화되어 있습니다.'
+        };
+      }
+
       const { data, error } = await supabase
         .from('comments')
         .update({ content })
