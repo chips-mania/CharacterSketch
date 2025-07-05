@@ -15,7 +15,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ image }) => {
   // AI 이미지별 캐릭터 상세 정보
   const characterDetails: Record<string, CharacterDetail> = {
     '1': {
-      quote: '"규칙은 절대적이다. 토르미아 마법협회의 안전이 최우선이다."',
+      quote: '"너에게 어떤 신념이 있다면, 네가 직접 그걸 이루면 되는거야."',
       description: '공인 8급의 조작계 조너로 전투 마법사이다. 토르미아 왕립마법학교를 수석졸업한 수재이며 토르미아 왕국 마법협회 경비부서 3층의 관리장으로 동색 직원증을 갖고 있다. 현재 스물 두살이고 15권 8화 기준으로 2년전에 협회에 입사해 현재 자리까지 올라온 천재다. 키는 작고 푸른 갈래머리를 허리까지 길렀으며 피부가 하얗고 입술이 붉은 새치름한 인상의 예쁜 얼굴이다. 무법사의 마법사들 중에선 드물게 지팡이를 사용하며 여기에는 봉황 장식과 알이 박혀 있다. 강력기는 화염계 기술인 봉황정. 가올드 친위대의 일원이다. 후에는 루피스트의 비서실장이 된다.',
       traits: ['작은 키', '허리까지 긴 푸른 갈래머리', '하얀 피부', '붉은 입술', '새치름한 인상', '봉황 장식이 화려하고 굵은 수정구가 박힌 가느다란 스태프', '안경'
 ]
@@ -44,7 +44,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ image }) => {
     <div className="mb-8">
       {/* 캐릭터 대사 */}
       <div>
-        <p className="text-3xl font-bold text-gray-800 italic">
+        <p className="text-3xl font-bold text-gray-800 italic font-serif">
           {currentCharacter.quote}
         </p>
       </div>
