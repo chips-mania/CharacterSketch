@@ -62,7 +62,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
           <img 
             src="/images/logo/댓글문구.png" 
             alt="댓글 안내" 
-            className="h-4 md:h-6 lg:h-8 w-auto"
+            className="h-3.5 md:h-5 lg:h-6 w-auto"
           />
         </div>
         
