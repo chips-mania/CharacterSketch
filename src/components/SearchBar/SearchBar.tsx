@@ -39,10 +39,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
     }
   };
 
-  const handleClear = () => {
-    setSearchTerm('');
-    onSearchResults(novels, false);
-  };
+
 
   return (
     <div className="mb-6 md:mb-8">
