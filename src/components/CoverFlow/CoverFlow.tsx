@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AIImage } from '../../types/ai-image';
 import ImageModal from '../ImageModal/ImageModal';
 
@@ -12,7 +11,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedImage, setSelectedImage] = useState<AIImage | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+
   const len = images.length;
 
   const handleImageClick = (image: AIImage) => {

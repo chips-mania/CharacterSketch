@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CoverFlow from '../../components/CoverFlow/CoverFlow';
 import NovelList from '../../components/NovelList/NovelList';
 import SearchBar from '../../components/SearchBar/SearchBar';

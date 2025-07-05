@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { AIImage } from '../../types/ai-image';
 import CommentSection from '../CommentSection/CommentSection';
 import CommentManager from '../CommentManager/CommentManager';
@@ -8,14 +8,6 @@ interface ImageModalProps {
   image: AIImage | null;
   isOpen: boolean;
   onClose: () => void;
-}
-
-interface Comment {
-  id: string;
-  author: string;
-  content: string;
-  timestamp: Date;
-  avatar?: string;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
