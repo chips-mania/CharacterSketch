@@ -58,14 +58,14 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       
       {/* 모달 컨테이너 */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-7xl w-full h-[95vh] flex flex-col">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-7xl w-full h-[95vh] md:h-[90vh] flex flex-col">
         {/* 닫기 버튼 */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 backdrop-blur-sm"
+          className="absolute top-2 md:top-4 right-2 md:right-4 z-10 bg-white/90 hover:bg-white p-1.5 md:p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 backdrop-blur-sm"
           aria-label="닫기"
         >
-          <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 md:w-6 md:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -73,7 +73,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
         {/* 컨텐츠 레이아웃 */}
         <div className="flex flex-col lg:flex-row h-full">
           {/* 왼쪽: 이미지 섹션 */}
-          <div className="lg:w-1/2 relative">
+          <div className="h-64 md:h-auto lg:w-1/2 relative">
             <img
               src={image.imageUrl}
               alt={image.characterName}
@@ -83,44 +83,44 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
             />
             
             {/* 이미지 하단 그라데이션 오버레이 */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
 
           {/* 오른쪽: 정보+댓글 전체 스크롤 영역 - 최적화된 스크롤 */}
-          <div className="lg:w-1/2 h-full overflow-y-auto overscroll-contain will-change-scroll" 
+          <div className="flex-1 lg:w-1/2 h-full overflow-y-auto overscroll-contain will-change-scroll" 
                style={{ 
                  scrollBehavior: 'auto',
                  transform: 'translateZ(0)', // 하드웨어 가속 활성화
                  WebkitOverflowScrolling: 'touch' // iOS 최적화
                }}>
             {/* 상단 정보 */}
-            <div className="p-8">
+            <div className="p-4 md:p-8">
               {/* 웹소설 제목 */}
-              <div className="mb-6">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-4xl font-bold text-gray-700">
+              <div className="mb-4 md:mb-6">
+                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+                  <h3 className="text-2xl md:text-4xl font-bold text-gray-700">
                     {image.novelTitle}
                   </h3>
-                  <button className="bg-black text-[#00DC64] text-sm px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200">
+                  <button className="bg-black text-[#00DC64] text-xs md:text-sm px-2 md:px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200 self-start md:self-auto">
                     웹소설 보기
                   </button>
                 </div>
               </div>
 
               {/* 캐릭터 이름과 소개 */}
-              <div className="mb-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <h2 className="text-3xl font-bold text-gray-800">
+              <div className="mb-4 md:mb-6">
+                <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
+                  <h2 className="text-xl md:text-3xl font-bold text-gray-800">
                     {image.characterName}
                   </h2>
-                  <p className="text-gray-700 leading-relaxed text-base mt-2">
+                  <p className="text-gray-700 leading-relaxed text-sm md:text-base mt-1 md:mt-2">
                     {image.description}
                   </p>
                 </div>
               </div>
 
               {/* 캐릭터 상세 정보 */}
-              <div className="mt-16">
+              <div className="mt-8 md:mt-16">
                 <CharacterInfo image={image} />
               </div>
             </div>

@@ -22,13 +22,13 @@ const Navigation: React.FC = () => {
           </Link>
 
           {/* 네비게이션 메뉴 */}
-          <div className="hidden md:flex items-center space-x-7 ml-14">
+          <div className="hidden md:flex items-center ml-14">
             <Link 
               to="/" 
-              className={`px-5 py-3 rounded-lg text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
+              className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
                 isActive('/') 
-                  ? 'text-primary bg-white' 
-                  : 'text-black hover:text-primary hover:bg-white'
+                  ? 'text-[#16EF72] bg-black' 
+                  : 'text-black hover:text-[#16EF72] hover:bg-white'
               }`}
               style={{ marginTop: '12%' }}
             >
@@ -36,10 +36,10 @@ const Navigation: React.FC = () => {
             </Link>
             <Link 
               to="/visualize" 
-              className={`px-5 py-3 rounded-lg text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
+              className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
                 isActive('/visualize') 
-                  ? 'text-primary bg-white' 
-                  : 'text-black hover:text-primary hover:bg-white'
+                  ? 'text-[#16EF72] bg-black' 
+                  : 'text-black hover:text-[#16EF72] hover:bg-white'
               }`}
               style={{ marginTop: '12%' }}
             >
@@ -47,10 +47,10 @@ const Navigation: React.FC = () => {
             </Link>
             <Link 
               to="/novel/1" 
-              className={`px-5 py-3 rounded-lg text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
+              className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
                 isActive('/novel/1') 
-                  ? 'text-primary bg-white' 
-                  : 'text-black hover:text-primary hover:bg-white'
+                  ? 'text-[#16EF72] bg-black' 
+                  : 'text-black hover:text-[#16EF72] hover:bg-white'
               }`}
               style={{ marginTop: '12%' }}
             >

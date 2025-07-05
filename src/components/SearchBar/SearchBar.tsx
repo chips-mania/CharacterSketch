@@ -45,11 +45,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
   };
 
   return (
-    <div className="mb-8">
-      <div className="max-w-2xl mx-auto">
+    <div className="mb-6 md:mb-8">
+      <div className="max-w-lg md:max-w-2xl mx-auto px-4 md:px-0">
         <div className="relative">
           {/* 검색 입력창과 버튼 */}
-          <div className="flex gap-2">
+          <div className="flex">
             <div className="relative flex-1">
               <input
                 type="text"
@@ -57,10 +57,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="w-full px-4 py-3 pl-12 pr-4 text-lg border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors duration-200 bg-white shadow-sm"
+                className="w-full px-3 md:px-4 py-2.5 md:py-3 pl-10 md:pl-12 pr-3 md:pr-4 text-sm md:text-base lg:text-lg border-2 border-gray-200 rounded-none focus:border-primary focus:outline-none transition-colors duration-200 bg-white shadow-sm"
               />
               <svg
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -77,28 +77,29 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
             {/* 검색 버튼 */}
             <button
               onClick={handleSearch}
-              className="px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors duration-200 shadow-sm flex items-center gap-2"
+              className="px-3 md:px-4 lg:px-6 py-2.5 md:py-3 bg-black text-white font-semibold rounded-none hover:bg-[#16EF72] hover:text-black transition-colors duration-200 shadow-sm flex items-center gap-1 md:gap-2 border-l-0 text-xs md:text-sm lg:text-base"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              검색
+              <span className="hidden sm:inline">검색</span>
             </button>
             
             {/* 초기화 버튼 */}
             {searchTerm && (
               <button
                 onClick={handleClear}
-                className="px-4 py-3 bg-gray-200 text-gray-600 font-semibold rounded-xl hover:bg-gray-300 transition-colors duration-200 shadow-sm"
+                className="px-2 md:px-3 lg:px-4 py-2.5 md:py-3 bg-gray-200 text-gray-600 font-semibold rounded-none hover:bg-gray-300 transition-colors duration-200 shadow-sm border-l-0 text-xs md:text-sm lg:text-base"
               >
-                초기화
+                <span className="hidden sm:inline">초기화</span>
+                <span className="sm:hidden">X</span>
               </button>
             )}
           </div>
 
           {/* 검색 옵션 */}
-          <div className="flex justify-center mt-4 space-x-4">
-            <label className="flex items-center space-x-2 cursor-pointer">
+          <div className="flex justify-center mt-3 md:mt-4 space-x-2 md:space-x-4">
+            <label className="flex items-center space-x-1 md:space-x-2 cursor-pointer">
               <input
                 type="radio"
                 name="searchBy"
@@ -107,10 +108,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
                 onChange={(e) => setSearchBy(e.target.value as 'title' | 'author' | 'tags')}
                 className="text-primary focus:ring-primary"
               />
-              <span className="text-sm text-gray-600">제목</span>
+              <span className="text-xs md:text-sm text-gray-600">제목</span>
             </label>
             
-            <label className="flex items-center space-x-2 cursor-pointer">
+            <label className="flex items-center space-x-1 md:space-x-2 cursor-pointer">
               <input
                 type="radio"
                 name="searchBy"
@@ -119,10 +120,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
                 onChange={(e) => setSearchBy(e.target.value as 'title' | 'author' | 'tags')}
                 className="text-primary focus:ring-primary"
               />
-              <span className="text-sm text-gray-600">작가</span>
+              <span className="text-xs md:text-sm text-gray-600">작가</span>
             </label>
             
-            <label className="flex items-center space-x-2 cursor-pointer">
+            <label className="flex items-center space-x-1 md:space-x-2 cursor-pointer">
               <input
                 type="radio"
                 name="searchBy"
@@ -131,7 +132,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
                 onChange={(e) => setSearchBy(e.target.value as 'title' | 'author' | 'tags')}
                 className="text-primary focus:ring-primary"
               />
-              <span className="text-sm text-gray-600">태그</span>
+              <span className="text-xs md:text-sm text-gray-600">태그</span>
             </label>
           </div>
         </div>

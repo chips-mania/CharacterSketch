@@ -151,7 +151,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
               }}
               disabled={isTransitioning}
               className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 disabled:cursor-not-allowed ${
-                index === currentIndex ? 'bg-primary shadow-lg' : 'bg-white/60 hover:bg-white/80'
+                index === currentIndex ? 'bg-black shadow-lg' : 'bg-black/40 hover:bg-black/60'
               }`}
               aria-label={index === currentIndex ? '현재' : `카드 ${index + 1}`}
             />
