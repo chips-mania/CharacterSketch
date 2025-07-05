@@ -57,22 +57,13 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
   return (
     <div className="flex-1 border-t border-gray-200 p-4 md:p-8">
       <div className="mb-4 md:mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <h3 className="text-base md:text-lg font-semibold text-gray-800">댓글 ({comments.length})</h3>
-            <img 
-              src="/images/logo/댓글문구.png" 
-              alt="댓글 안내" 
-              className="h-6 md:h-8 w-auto"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={!newComment.trim() || !commentAuthor.trim() || isSubmitting}
-            className="bg-black text-white px-4 py-2 rounded-none text-sm font-medium hover:bg-[#16EF72] hover:text-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? '작성 중...' : '댓글 작성'}
-          </button>
+        <div className="flex items-center gap-2 mb-4">
+          <h3 className="text-sm md:text-base lg:text-lg font-semibold text-gray-800">댓글 ({comments.length})</h3>
+          <img 
+            src="/images/logo/댓글문구.png" 
+            alt="댓글 안내" 
+            className="h-4 md:h-6 lg:h-8 w-auto"
+          />
         </div>
         
         {/* 댓글 작성 폼 */}
@@ -83,17 +74,26 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
               value={commentAuthor}
               onChange={(e) => setCommentAuthor(e.target.value)}
               placeholder="아이디를 입력해주세요"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black hover:border-black transition-colors duration-200"
+              className="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black hover:border-black transition-colors duration-200 text-xs md:text-sm"
               disabled={isSubmitting}
             />
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="댓글을 작성해주세요..."
-              className="w-full p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-black focus:border-black hover:border-black transition-colors duration-200"
+              className="w-full p-2 md:p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-black focus:border-black hover:border-black transition-colors duration-200 text-xs md:text-sm"
               rows={3}
               disabled={isSubmitting}
             />
+          </div>
+          <div className="flex justify-end mt-3">
+            <button
+              type="submit"
+              disabled={!newComment.trim() || !commentAuthor.trim() || isSubmitting}
+              className="bg-black text-white px-3 md:px-4 py-1.5 md:py-2 rounded-none text-xs md:text-sm font-medium hover:bg-[#16EF72] hover:text-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? '작성 중...' : '댓글 작성'}
+            </button>
           </div>
         </form>
 

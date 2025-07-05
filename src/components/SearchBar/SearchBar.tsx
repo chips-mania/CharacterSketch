@@ -57,7 +57,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="w-full px-3 md:px-4 py-2.5 md:py-3 pl-10 md:pl-12 pr-3 md:pr-4 text-sm md:text-base lg:text-lg border-2 border-gray-200 rounded-none focus:border-primary focus:outline-none transition-colors duration-200 bg-white shadow-sm"
+                className="w-full px-3 md:px-4 py-2.5 md:py-3 pl-10 md:pl-12 pr-3 md:pr-4 text-sm md:text-base lg:text-lg border-2 border-gray-200 rounded-none focus:border-black focus:outline-none transition-colors duration-200 bg-white shadow-sm"
               />
               <svg
                 className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400"

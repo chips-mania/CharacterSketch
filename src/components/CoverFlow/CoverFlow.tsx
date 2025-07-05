@@ -62,7 +62,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
           </svg>
         </button>
 
-        <div className="flex items-start justify-center relative h-full min-h-[550px] md:min-h-[650px] lg:min-h-[750px] xl:min-h-[850px] pt-16">
+        <div className="flex items-start justify-center relative h-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px] xl:min-h-[700px] pt-16">
           {images.map((image, index) => {
             // 현재 이미지를 기준으로 상대적 위치 계산
             let distance = index - currentIndex;
@@ -81,7 +81,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
 
             const isActive = distance === 0;
             const rotationY = distance * 25;
-            const translateX = distance * 420;
+            const translateX = distance * 340;
             const translateZ = isActive ? 0 : -100;
             const scale = isActive ? 1 : 0.8;
             const opacity = isActive ? 1 : 0.7;
@@ -101,7 +101,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
                   <img
                     src={image.imageUrl}
                     alt={image.characterName}
-                    className="w-72 h-96 md:w-80 md:h-[28rem] lg:w-88 lg:h-[32rem] xl:w-[26rem] xl:h-[36rem] object-cover rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500"
+                    className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-96 xl:w-80 xl:h-[28rem] object-cover rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500"
                   />
                   
                   {/* 양옆 이미지용 오버레이 (중앙이 아닐 때만) */}
@@ -138,7 +138,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
         </button>
 
         {/* 인디케이터 */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3">
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-3">
           {images.map((_, index) => (
             <button
               key={index}
