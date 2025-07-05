@@ -85,16 +85,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ novels, onSearchResults }) => {
               <span className="hidden sm:inline">검색</span>
             </button>
             
-            {/* 초기화 버튼 */}
-            {searchTerm && (
-              <button
-                onClick={handleClear}
-                className="px-2 md:px-3 lg:px-4 py-2.5 md:py-3 bg-gray-200 text-gray-600 font-semibold rounded-none hover:bg-gray-300 transition-colors duration-200 shadow-sm border-l-0 text-xs md:text-sm lg:text-base"
-              >
-                <span className="hidden sm:inline">초기화</span>
-                <span className="sm:hidden">X</span>
-              </button>
-            )}
+
           </div>
 
           {/* 검색 옵션 */}
