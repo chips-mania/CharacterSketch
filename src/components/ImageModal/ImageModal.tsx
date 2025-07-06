@@ -132,6 +132,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
                   <CommentSection 
                     comments={comments}
                     onAddComment={onAddComment}
+                    imageId={image.id}
                   />
                 )}
               </CommentManager>

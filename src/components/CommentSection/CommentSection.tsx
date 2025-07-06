@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { keywordService } from '../../services/keywordService';
 
 interface Comment {
   id: string;
@@ -11,9 +12,10 @@ interface Comment {
 interface CommentSectionProps {
   comments: Comment[];
   onAddComment: (comment: Comment) => void;
+  imageId: string;
 }
 
-const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment }) => {
+const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment, imageId }) => {
   const [newComment, setNewComment] = useState('');
   const [commentAuthor, setCommentAuthor] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,8 +26,8 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
 
     setIsSubmitting(true);
     
-    // 실제 구현에서는 API 호출
-    setTimeout(() => {
+    try {
+      // 댓글 추가
       const comment: Comment = {
         id: Date.now().toString(),
         author: commentAuthor.trim(),
@@ -35,10 +37,23 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
       };
       
       onAddComment(comment);
+      
+      // 키워드 추출 및 저장 (백그라운드에서 실행)
+      keywordService.extractAndSaveKeywords(
+        newComment.trim(), 
+        imageId, 
+        comment.id
+      ).catch(error => {
+        console.error('Failed to extract and save keywords:', error);
+      });
+      
       setNewComment('');
       setCommentAuthor('');
+    } catch (error) {
+      console.error('Failed to process comment:', error);
+    } finally {
       setIsSubmitting(false);
-    }, 500);
+    }
   };
 
   const formatTime = (date: Date) => {
@@ -96,6 +111,8 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
             </button>
           </div>
         </form>
+
+
 
         {/* 댓글 목록 */}
         <div className="space-y-4">
