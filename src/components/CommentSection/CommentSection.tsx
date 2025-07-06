@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { keywordService } from '../../services/keywordService';
+import { batchKeywordService } from '../../services/batchKeywordService';
+import { supabase } from '../../lib/supabase';
 
 interface Comment {
   id: string;
@@ -38,14 +40,31 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment,
       
       onAddComment(comment);
       
-      // 키워드 추출 및 저장 (백그라운드에서 실행)
-      keywordService.extractAndSaveKeywords(
-        newComment.trim(), 
-        imageId, 
-        comment.id
-      ).catch(error => {
-        console.error('Failed to extract and save keywords:', error);
-      });
+      // Supabase에 댓글 저장
+      if (supabase) {
+        const { error } = await supabase
+          .from('comments')
+          .insert({
+            id: comment.id,
+            image_id: imageId,
+            author: comment.author,
+            content: comment.content,
+            created_at: comment.timestamp.toISOString()
+          });
+        
+        if (error) {
+          console.error('Failed to save comment to database:', error);
+        }
+      }
+      
+      // 댓글 개수 확인 후 배치 처리
+      const shouldProcessBatch = await batchKeywordService.shouldProcessBatch(imageId);
+      if (shouldProcessBatch) {
+        // 배치 키워드 추출 실행
+        batchKeywordService.extractBatchKeywords(imageId).catch(error => {
+          console.error('Failed to extract batch keywords:', error);
+        });
+      }
       
       setNewComment('');
       setCommentAuthor('');
