@@ -1,6 +1,6 @@
 const SERVICE_PLANNING_CONTENT = `
 ## 서비스 개요
-웹소설 독자들의 상상 속 캐릭터를 시각화하는 독자 참여형 AI 콘텐츠 서비스입니다.
+웹소설 독자들의 상상 속 캐릭터를 시각화하는 **독자 참여형 AI 콘텐츠 서비스**입니다.
 
 <br/><br/><br/>
 
@@ -94,8 +94,8 @@ const VisualizePage = () => {
   const convertMarkdownToHtml = (markdown: string) => {
     return markdown
       // 제목 변환
-      .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #0F766E; border-left: 10px solid #0F766E; border-bottom: 2px #0F766E solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
-      .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #0F766E; border-left: 10px solid #0F766E; border-bottom: 2px #0F766E solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
+      .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #104A26; border-left: 10px solid #104A26; border-bottom: 2px #104A26 solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
+      .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #104A26; border-left: 10px solid #104A26; border-bottom: 2px #104A26 solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
       .replace(/^### (.*$)/gm, '<h3 class="text-xl font-medium text-gray-600 mb-3 mt-6">$1</h3>')
       // 강조 텍스트 변환
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
