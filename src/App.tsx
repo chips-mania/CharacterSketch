@@ -11,8 +11,8 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/novel/:id" element={<NovelDetailPage />} />
-          <Route path="/visualize/:id" element={<VisualizePage />} />
+          <Route path="/AIprompting" element={<NovelDetailPage />} />
+          <Route path="/service" element={<VisualizePage />} />
         </Routes>
       </div>
     </Router>

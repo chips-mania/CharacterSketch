@@ -35,9 +35,9 @@ const Navigation: React.FC = () => {
               홈
             </Link>
             <Link 
-              to="/visualize" 
+              to="/service" 
               className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
-                isActive('/visualize') 
+                isActive('/service') 
                   ? 'text-[#16EF72] bg-black' 
                   : 'text-black hover:text-[#16EF72] hover:bg-white'
               }`}
@@ -46,9 +46,9 @@ const Navigation: React.FC = () => {
               서비스 기획
             </Link>
             <Link 
-              to="/novel/1" 
+              to="/AIprompting" 
               className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
-                isActive('/novel/1') 
+                isActive('/AIprompting') 
                   ? 'text-[#16EF72] bg-black' 
                   : 'text-black hover:text-[#16EF72] hover:bg-white'
               }`}
