@@ -93,8 +93,8 @@ const VisualizePage = () => {
   const convertMarkdownToHtml = (markdown: string) => {
     return markdown
       // 제목 변환
-      .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #104A26; border-left: 10px solid #104A26; border-bottom: 2px #104A26 solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
-      .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #104A26; border-left: 10px solid #104A26; border-bottom: 2px #104A26 solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
+      .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #2DB400; border-left: 10px solid #2DB400; border-bottom: 2px #2DB400 solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
+      .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #2DB400; border-left: 10px solid #2DB400; border-bottom: 2px #2DB400 solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
       .replace(/^### (.*$)/gm, '<h3 class="text-xl font-medium text-black mb-3 mt-6">$1</h3>')
       // 강조 텍스트 변환
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
