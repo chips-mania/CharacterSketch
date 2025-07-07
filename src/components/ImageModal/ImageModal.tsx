@@ -23,6 +23,13 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
     }
   }, [onClose]);
 
+  // 웹소설 보기 버튼 클릭 핸들러
+  const handleNovelView = useCallback(() => {
+    if (image?.novelTitle === '무한의 마법사') {
+      window.open('https://series.naver.com/novel/detail.series?productNo=2362844', '_blank');
+    }
+  }, [image?.novelTitle]);
+
   React.useEffect(() => {
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown as any);
@@ -101,7 +108,10 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
                   <h3 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-700">
                     {image.novelTitle}
                   </h3>
-                  <button className="bg-black text-[#00DC64] text-xs md:text-sm px-2 md:px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200 self-start md:self-auto">
+                  <button 
+                    onClick={handleNovelView}
+                    className="bg-black text-[#00DC64] text-xs md:text-sm px-2 md:px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200 self-start md:self-auto"
+                  >
                     웹소설 보기
                   </button>
                 </div>

@@ -60,7 +60,7 @@ const SERVICE_PLANNING_CONTENT = `
 ### 1. 독자 참여도가 낮을 가능성:
 댓글 외 참여가 없고, 의견 반영 절차가 단조로우며 즉각적인 상호작용을 얻을 수 있는 구조가 아님
 
-- 댓글 외 선택형 질문 (키워드 고르기 , 고양이상 vs 강아지상 등)
+- 댓글 외 선택형 질문 (키워드 고르기 , 고양이 상 vs 강아지 상 등)
 - 리워드 시스템 추가
 
 ### 2. 참여 독자 층이 한정적임:
@@ -95,15 +95,15 @@ const VisualizePage = () => {
       // 제목 변환
       .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #104A26; border-left: 10px solid #104A26; border-bottom: 2px #104A26 solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
       .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #104A26; border-left: 10px solid #104A26; border-bottom: 2px #104A26 solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
-      .replace(/^### (.*$)/gm, '<h3 class="text-xl font-medium text-gray-600 mb-3 mt-6">$1</h3>')
+      .replace(/^### (.*$)/gm, '<h3 class="text-xl font-medium text-black mb-3 mt-6">$1</h3>')
       // 강조 텍스트 변환
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
       .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
       // 리스트 변환
-      .replace(/^- (.*$)/gm, '<li class="ml-4 mb-2">$1</li>')
+      .replace(/^- (.*$)/gm, '<li class="ml-4 mb-2 text-gray-600">$1</li>')
       // 줄바꿈 처리
-      .replace(/\n\n/g, '</p><p class="mb-4">')
-      .replace(/^(?!<[h|p|li])/gm, '<p class="mb-4">')
+      .replace(/\n\n/g, '</p><p class="mb-4 text-gray-600">')
+      .replace(/^(?!<[h|p|li])/gm, '<p class="mb-4 text-gray-600">')
       .replace(/(?<!>)$/gm, '</p>')
       // 빈 태그 정리
       .replace(/<p class="mb-4"><\/p>/g, '')

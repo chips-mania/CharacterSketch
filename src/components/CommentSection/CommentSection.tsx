@@ -113,7 +113,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment,
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              placeholder="댓글을 작성해주세요..."
+              placeholder="댓글을 작성해주세요"
               className="w-full p-2 md:p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-black focus:border-black hover:border-black transition-colors duration-200 text-xs md:text-sm"
               rows={3}
               disabled={isSubmitting}
