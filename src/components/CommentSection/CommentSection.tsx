@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { keywordService } from '../../services/keywordService';
+import React, { useState } from 'react';
 import { batchKeywordService } from '../../services/batchKeywordService';
 import { supabase } from '../../lib/supabase';
 
