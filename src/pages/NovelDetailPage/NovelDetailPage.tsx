@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { aiImages } from '../../data/ai-images';
 import { AIImage } from '../../types/ai-image';
 import ImageModal from '../../components/ImageModal/ImageModal';
