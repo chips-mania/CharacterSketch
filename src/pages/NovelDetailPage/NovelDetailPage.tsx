@@ -111,10 +111,10 @@ const NovelDetailPage = () => {
         {/* 페이지 제목 */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
-            AI 생성 캐릭터 갤러리
+            AI 프롬프팅
           </h1>
           <p className="text-lg md:text-xl text-gray-600">
-            웹소설 속 캐릭터들이 AI로 재탄생했습니다
+            AI 이미지 예시
           </p>
         </div>
 
@@ -143,12 +143,7 @@ const NovelDetailPage = () => {
           ))}
         </div>
 
-        {/* 이미지 개수 표시 */}
-        <div className="text-center mt-12">
-          <p className="text-gray-600 text-lg">
-            총 <span className="font-semibold text-black">{aiImages.length}</span>개의 AI 생성 캐릭터
-          </p>
-        </div>
+
 
         {/* AI 프롬프팅 과정 개요 */}
         <div className="mt-16 bg-white rounded-lg shadow-lg p-8">
