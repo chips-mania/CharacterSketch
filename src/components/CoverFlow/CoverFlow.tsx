@@ -86,10 +86,11 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
             const scale = isActive ? 1 : 0.85; // 스케일 차이를 줄여서 더 자연스럽게
             
             // 투명도 계산: 중앙이 가장 선명, 외각으로 갈수록 약간 투명해짐
-            const opacity = isActive ? 1 : Math.abs(distance) === 1 ? 1 : 0.75;
+            const opacity = isActive ? 1 : Math.abs(distance) === 1 ? 1 : 0.7;
             
             // z-index 계산: 중앙이 가장 앞, 외각으로 갈수록 뒤로
-            const zIndex = isActive ? 20 : Math.abs(distance) === 1 ? 15 : 10;
+            // 애니메이션 중에는 새로 나타나는 이미지를 더 뒤로
+            const zIndex = isActive ? 20 : Math.abs(distance) === 1 ? 15 : isTransitioning ? 5 : 10;
 
             return (
               <div
