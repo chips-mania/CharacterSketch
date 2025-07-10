@@ -74,17 +74,22 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
               distance += len;
             }
             
-            // 보이는 범위(-1, 0, 1)가 아닌 이미지는 숨김
-            if (Math.abs(distance) > 1) {
+            // 보이는 범위를 늘려서 더 자연스럽게 (-2, -1, 0, 1, 2)
+            if (Math.abs(distance) > 2) {
               return null;
             }
 
             const isActive = distance === 0;
-            const rotationY = distance * 25;
-            const translateX = distance * 340;
-            const translateZ = isActive ? 0 : -100;
-            const scale = isActive ? 1 : 0.8;
-            const opacity = isActive ? 1 : 0.7;
+            const rotationY = distance * 20; // 회전 각도를 줄여서 더 자연스럽게
+            const translateX = distance * 280; // 간격을 줄여서 더 자연스럽게
+            const translateZ = isActive ? 0 : -80; // Z축 이동을 줄여서 더 자연스럽게
+            const scale = isActive ? 1 : 0.85; // 스케일 차이를 줄여서 더 자연스럽게
+            
+            // 투명도 계산: 중앙이 가장 선명, 외각으로 갈수록 약간 투명해짐
+            const opacity = isActive ? 1 : Math.abs(distance) === 1 ? 1 : 0.75;
+            
+            // z-index 계산: 중앙이 가장 앞, 외각으로 갈수록 뒤로
+            const zIndex = isActive ? 20 : Math.abs(distance) === 1 ? 15 : 10;
 
             return (
               <div
@@ -93,7 +98,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
                 style={{
                   transform: `perspective(1200px) rotateY(${rotationY}deg) translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale})`,
                   opacity: opacity,
-                  zIndex: isActive ? 20 : 10
+                  zIndex: zIndex
                 }}
                 onClick={() => handleImageClick(image)}
               >
@@ -106,7 +111,7 @@ const CoverFlow: React.FC<CoverFlowProps> = ({ images }) => {
                   
                   {/* 양옆 이미지용 오버레이 (중앙이 아닐 때만) */}
                   {!isActive && (
-                    <div className="absolute inset-0 bg-black/20 rounded-2xl" />
+                    <div className="absolute inset-0 bg-black/15 rounded-2xl" />
                   )}
                   
                   {/* 호버 효과 오버레이 */}
