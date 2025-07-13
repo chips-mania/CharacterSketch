@@ -105,7 +105,17 @@ const NovelDetailPage = () => {
         background: 'linear-gradient(to bottom, rgba(52, 251, 134, 0.2) 0%, rgba(52, 251, 134, 0.1) 50%, transparent 100%)'
       }}></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto p-6 relative">
+        {/* 최상단 이미지 */}
+        <div className="text-center mb-12">
+          <img 
+            src="/images/characters/AI프롬프팅(라비드_플루).png" 
+            alt="AI 프롬프팅 라비드 플루" 
+            className="w-full max-w-4xl mx-auto h-auto rounded-lg shadow-lg"
+            style={{ width: '848px', maxWidth: '100%' }}
+          />
+        </div>
+
         {/* 페이지 제목 */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
@@ -117,7 +127,7 @@ const NovelDetailPage = () => {
         </div>
 
         {/* 이미지 갤러리 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {aiImages.map((image) => (
             <div 
               key={image.id}
@@ -128,7 +138,7 @@ const NovelDetailPage = () => {
                 <img
                   src={image.imageUrl}
                   alt={image.characterName}
-                  className="w-full h-96 md:h-[28rem] lg:h-[32rem] object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-64 md:h-72 lg:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -140,8 +150,6 @@ const NovelDetailPage = () => {
             </div>
           ))}
         </div>
-
-
 
         {/* AI 프롬프팅 과정 개요 */}
         <div className="mt-16 bg-white rounded-lg shadow-lg p-8">
