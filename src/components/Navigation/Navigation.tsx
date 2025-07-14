@@ -20,7 +20,7 @@ const Navigation: React.FC = () => {
   return (
     <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-14 md:h-18 lg:h-24">
+        <div className="flex items-center h-14 md:h-18 lg:h-24">
           {/* 로고 */}
           <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
             <img 
@@ -31,7 +31,7 @@ const Navigation: React.FC = () => {
           </Link>
 
           {/* 데스크톱 네비게이션 메뉴 */}
-          <div className="hidden md:flex items-center ml-14">
+          <div className="hidden md:flex items-center ml-8">
             <Link 
               to="/" 
               className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
