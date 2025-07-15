@@ -48,5 +48,21 @@ export const aiImages: AIImage[] = [
     novelTitle: '예시 웹소설 3',
     characterName: '예시 캐릭터 3',
     description: 'AI 생성 예시 캐릭터 3'
+  },
+  {
+    id: '7',
+    imageUrl: '/images/ai-images/이카엘.png',
+    novelId: '1',
+    novelTitle: '무한의 마법사',
+    characterName: '이카엘',
+    description: '증폭의 대천사'
+  },
+  {
+    id: '8',
+    imageUrl: '/images/ai-images/메티엘.png',
+    novelId: '1',
+    novelTitle: '무한의 마법사',
+    characterName: '메티엘',
+    description: '결합의 대천사'
   }
 ]; 
