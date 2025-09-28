@@ -51,7 +51,7 @@ const NovelList: React.FC<NovelListProps> = ({ novels }) => {
               </div>
 
               {/* 참여 버튼 */}
-              <button className="w-full bg-black text-white py-2 md:py-2.5 lg:py-3 px-3 md:px-4 rounded-none text-xs md:text-sm lg:text-base font-semibold hover:bg-[#16EF72] hover:text-black transition-colors duration-200">
+              <button className="w-full bg-black text-white py-2 md:py-2.5 lg:py-3 px-3 md:px-4 rounded-none text-xs md:text-sm lg:text-base font-semibold hover:bg-[#fee800] hover:text-black transition-colors duration-200">
                 스케치하기
               </button>
             </div>

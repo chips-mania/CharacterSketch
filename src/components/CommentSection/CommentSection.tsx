@@ -123,7 +123,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment,
             <button
               type="submit"
               disabled={!newComment.trim() || !commentAuthor.trim() || isSubmitting}
-              className="bg-black text-white px-3 md:px-4 py-1.5 md:py-2 rounded-none text-xs md:text-sm font-medium hover:bg-[#16EF72] hover:text-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-black text-white px-3 md:px-4 py-1.5 md:py-2 rounded-none text-xs md:text-sm font-medium hover:bg-[#fee800] hover:text-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? '작성 중...' : '댓글 작성'}
             </button>

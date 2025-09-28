@@ -110,7 +110,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onClose }) => {
                   </h3>
                   <button 
                     onClick={handleNovelView}
-                    className="bg-black text-[#00DC64] text-xs md:text-sm px-2 md:px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200 self-start md:self-auto"
+                    className="bg-black text-[#fee800] text-xs md:text-sm px-2 md:px-3 py-1 rounded-md hover:bg-gray-800 transition-colors duration-200 self-start md:self-auto"
                   >
                     웹소설 보기
                   </button>

@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
           {/* 로고 */}
           <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
             <img 
-              src="/images/logo/logo.png" 
+              src="/images/logo/new_logo.png" 
               alt="CharacterSketch" 
               className="h-14 md:h-18 lg:h-24 w-auto mt-3"
             />
@@ -36,8 +36,8 @@ const Navigation: React.FC = () => {
               to="/" 
               className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
                 isActive('/') 
-                  ? 'text-[#16EF72] bg-black' 
-                  : 'text-black hover:text-[#16EF72] hover:bg-white'
+                  ? 'text-[#fee800] bg-black' 
+                  : 'text-black hover:text-[#fee800] hover:bg-white'
               }`}
               style={{ marginTop: '12%' }}
             >
@@ -47,8 +47,8 @@ const Navigation: React.FC = () => {
               to="/service" 
               className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
                 isActive('/service') 
-                  ? 'text-[#16EF72] bg-black' 
-                  : 'text-black hover:text-[#16EF72] hover:bg-white'
+                  ? 'text-[#fee800] bg-black' 
+                  : 'text-black hover:text-[#fee800] hover:bg-white'
               }`}
               style={{ marginTop: '12%' }}
             >
@@ -58,8 +58,8 @@ const Navigation: React.FC = () => {
               to="/AIprompting" 
               className={`px-8 py-3 rounded-none text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 ${
                 isActive('/AIprompting') 
-                  ? 'text-[#16EF72] bg-black' 
-                  : 'text-black hover:text-[#16EF72] hover:bg-white'
+                  ? 'text-[#fee800] bg-black' 
+                  : 'text-black hover:text-[#fee800] hover:bg-white'
               }`}
               style={{ marginTop: '12%' }}
             >
@@ -89,8 +89,8 @@ const Navigation: React.FC = () => {
                 to="/" 
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                   isActive('/') 
-                    ? 'text-[#16EF72] bg-black' 
-                    : 'text-black hover:text-[#16EF72] hover:bg-gray-100'
+                    ? 'text-[#fee800] bg-black' 
+                    : 'text-black hover:text-[#fee800] hover:bg-gray-100'
                 }`}
                 onClick={closeMobileMenu}
               >
@@ -100,8 +100,8 @@ const Navigation: React.FC = () => {
                 to="/service" 
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                   isActive('/service') 
-                    ? 'text-[#16EF72] bg-black' 
-                    : 'text-black hover:text-[#16EF72] hover:bg-gray-100'
+                    ? 'text-[#fee800] bg-black' 
+                    : 'text-black hover:text-[#fee800] hover:bg-gray-100'
                 }`}
                 onClick={closeMobileMenu}
               >
@@ -111,8 +111,8 @@ const Navigation: React.FC = () => {
                 to="/AIprompting" 
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                   isActive('/AIprompting') 
-                    ? 'text-[#16EF72] bg-black' 
-                    : 'text-black hover:text-[#16EF72] hover:bg-gray-100'
+                    ? 'text-[#fee800] bg-black' 
+                    : 'text-black hover:text-[#fee800] hover:bg-gray-100'
                 }`}
                 onClick={closeMobileMenu}
               >

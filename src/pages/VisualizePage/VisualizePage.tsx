@@ -93,8 +93,8 @@ const VisualizePage = () => {
   const convertMarkdownToHtml = (markdown: string) => {
     return markdown
       // 제목 변환
-      .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #2DB400; border-left: 10px solid #2DB400; border-bottom: 2px #2DB400 solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
-      .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #2DB400; border-left: 10px solid #2DB400; border-bottom: 2px #2DB400 solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
+      .replace(/^# (.*$)/gm, '<h1 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #fee800; border-left: 10px solid #fee800; border-bottom: 2px #fee800 solid; font-weight: bold; font-size: 1.875rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h1>')
+      .replace(/^## (.*$)/gm, '<h2 style="padding: 0.4em 1em 0.4em 0.5em; margin: 0.5em 0em; color: #fee800; border-left: 10px solid #fee800; border-bottom: 2px #fee800 solid; font-weight: bold; font-size: 1.5rem;"><span style="font-family: \'Noto Sans Demilight\', \'Noto Sans KR\';">$1</span></h2>')
       .replace(/^### (.*$)/gm, '<h3 class="text-xl font-medium text-black mb-3 mt-6">$1</h3>')
       // 강조 텍스트 변환
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
@@ -117,7 +117,7 @@ const VisualizePage = () => {
     <div className="min-h-screen bg-background">
       {/* 상단 그라데이션 배경 */}
       <div className="absolute top-0 left-0 right-0 h-[500px] pointer-events-none" style={{
-        background: 'linear-gradient(to bottom, rgba(52, 251, 134, 0.2) 0%, rgba(52, 251, 134, 0.1) 50%, transparent 100%)'
+        background: 'linear-gradient(to bottom, rgba(254, 232, 0, 0.2) 0%, rgba(254, 232, 0, 0.1) 50%, transparent 100%)'
       }}></div>
       
       <div className="max-w-4xl mx-auto p-6 relative">

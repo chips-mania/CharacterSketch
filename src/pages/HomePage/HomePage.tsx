@@ -19,17 +19,17 @@ const HomePage = () => {
     <div className="min-h-screen bg-background">
       {/* 상단 그라데이션 배경 */}
       <div className="absolute top-0 left-0 right-0 h-[500px] pointer-events-none" style={{
-        background: 'linear-gradient(to bottom, rgba(52, 251, 134, 0.2) 0%, rgba(52, 251, 134, 0.1) 50%, transparent 100%)'
+        background: 'linear-gradient(to bottom, rgba(254, 232, 0, 0.2) 0%, rgba(254, 232, 0, 0.1) 50%, transparent 100%)'
       }}></div>
       
       <div className="max-w-7xl mx-auto px-6 py-8 relative">
         {/* 상단 문구 */}
         <div className="mb-16">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
-            웹소설 속 캐릭터를 설명해주세요!
+            웹소설 속 <span className="text-[#fee800] font-black" style={{textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000'}}>캐릭터</span>를 설명해주세요!
           </h1>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black">
-            AI가 그려드립니다!
+            <span className="text-[#fee800] font-black" style={{textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000'}}>AI</span>가 그려드립니다!
           </h1>
         </div>
         
